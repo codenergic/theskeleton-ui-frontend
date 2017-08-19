@@ -17,13 +17,9 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import { mapState } from 'vuex'
 
 export default {
-  components: {
-    Logo
-  },
   computed: {
     ...mapState({
       posts: 'posts'

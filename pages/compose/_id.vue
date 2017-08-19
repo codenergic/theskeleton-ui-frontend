@@ -1,16 +1,15 @@
 <template>
-  <div>
-    <div class="input-group fluid">
-      <input type="text" v-model="post.title" class="text-editor-title" placeholder="Title">
-    </div>
-    <medium-editor :text="post.body" :options="editorOptions"></medium-editor>
-  </div>
+  <markdown-editor></markdown-editor>
 </template>
 
 <script>
+import MarkdownEditor from '~/components/MarkdownEditor'
 import { mapState } from 'vuex'
 
 export default {
+  components: {
+    MarkdownEditor
+  },
   data: () => ({
     editorOptions: {
       paste: {
