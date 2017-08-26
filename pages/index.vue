@@ -1,18 +1,14 @@
 <template>
   <div>
-    <div class="row cols-sm-12" v-for="post in posts" :key="post.id">
-      <div class="card">
-        <div class="section">
-          <router-link :to="{ name: 'posts-id', params: { id: post.id } }">
-            <h3 v-text="post.title"></h3>
-          </router-link>
-        </div>
-        <img :src="`https://unsplash.it/1200?image=0`" class="section media">
-        <div class="section">
-          <p v-text="post.body"></p>
-        </div>
-      </div>
-    </div>
+    <article class="blog-post" v-for="post in posts" :key="post.id">
+      <header>
+        <h2 v-text="post.title"></h2>
+        <p class="blog-post-meta"><time datetime="2014-09-28T00:00:00Z">Sun Sep 28, 2014</time> by Michael Henderson</p>
+      </header>
+      <p v-text="post.body"/>
+      <router-link :to="{ name: 'posts-id', params: { id: post.id } }">Read more →</router-link>
+      <hr/>
+    </article>
   </div>
 </template>
 

@@ -3,7 +3,6 @@
     <div class="input-group fluid">
       <input type="text" v-model="post.title" class="text-editor-title" placeholder="Title">
     </div>
-    <div v-text="textMarkdown"></div>
     <medium-editor :text="post.body || ''" :options="editorOptions"></medium-editor>
   </div>
 </template>

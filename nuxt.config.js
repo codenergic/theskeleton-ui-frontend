@@ -14,7 +14,8 @@ module.exports = {
     ]
   },
   css: [
-    { src: 'mini.css' },
+    { src: 'bootstrap/dist/css/bootstrap.css' },
+    { src: 'bootstrap-vue/dist/bootstrap-vue.css' },
     { src: 'medium-editor/dist/css/medium-editor.css' },
     { src: 'medium-editor/dist/css/themes/default.css' }
   ],
@@ -23,6 +24,7 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   plugins: [
+    { src: '~/plugins/bootstrap'},
     { src: '~/plugins/axios' },
     { src: '~/plugins/vue2-medium-editor', ssr: false }
   ],
@@ -30,7 +32,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: [ 'axios', 'vue2-medium-editor' ],
+    vendor: [ 'bootstrap-vue', 'axios', 'vue2-medium-editor' ],
     /*
     ** Run ESLINT on save
     */

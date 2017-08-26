@@ -14,8 +14,9 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-vue": "^1.0.0-beta.5",
     "medium-editor-markdown": "^2.6.0",
-    "mini.css": "^2.3.4",
     "nuxt": "^1.0.0-rc3",
     "vue2-medium-editor": "^1.1.1"
   },
