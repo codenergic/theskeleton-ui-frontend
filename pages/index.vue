@@ -5,7 +5,7 @@
         <h2 v-text="post.title"></h2>
         <p class="blog-post-meta"><time datetime="2014-09-28T00:00:00Z">Sun Sep 28, 2014</time> by Michael Henderson</p>
       </header>
-      <p v-text="post.body"/>
+      <p v-text="post.content"/>
       <router-link :to="{ name: 'posts-id', params: { id: post.id } }">Read more →</router-link>
       <hr/>
     </article>
@@ -22,7 +22,7 @@ export default {
     })
   },
   fetch ({ store }) {
-    return store.dispatch('findAllPosts')
+    return store.dispatch('findPost')
   }
 }
 </script>

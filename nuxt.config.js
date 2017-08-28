@@ -37,6 +37,7 @@ module.exports = {
     ** Run ESLINT on save
     */
     extend (config, ctx) {
+      console.log(JSON.stringify(config))
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -46,5 +47,13 @@ module.exports = {
         })
       }
     }
+  },
+  modules: [
+    '@nuxtjs/proxy'
+  ],
+  proxy: {
+    '/api': 'http://localhost:8080',
+    '/auth': 'http://localhost:8080',
+    '/login': 'http://localhost:8080'
   }
 }

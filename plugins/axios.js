@@ -9,6 +9,4 @@ const VueAxios = {
   }
 }
 
-Vue.use(VueAxios, {
-  baseURL: 'http://jsonplaceholder.typicode.com'
-})
+Vue.use(VueAxios)
