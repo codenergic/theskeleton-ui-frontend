@@ -20,9 +20,9 @@ export default {
     ...mapState({
       posts: 'posts'
     })
-  },
-  fetch ({ store }) {
-    return store.dispatch('findPost')
   }
+  // fetch ({ store }) {
+  //   return store.dispatch('findPost')
+  // }
 }
 </script>

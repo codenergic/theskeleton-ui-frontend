@@ -1,16 +1,25 @@
 <template>
-  <nav class="navbar navbar-inverse navbar-static-top">
+  <b-navbar toggleable="md" type="dark" variant="dark">
     <div class="container">
-      <div class="navbar-header">
-        <router-link :to="{ name: 'index' }" class="navbar-brand">Night Owl</router-link>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><router-link :to="{ name: 'compose' }">Write a Story</router-link></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
+      <b-nav-toggle target="nav-collapse"></b-nav-toggle>
+
+      <b-navbar-brand :to="{ name: 'index' }">
+        The<strong>Skeleton</strong>
+      </b-navbar-brand>
+
+      <b-collapse is-nav id="nav-collapse">
+        <b-nav is-nav-bar>
+          <b-nav-item :to="{ name: 'compose' }">
+            <i class="fa fa-pencil"></i>
+            Write a Story
+          </b-nav-item>
+        </b-nav>
+        <b-nav is-nav-bar class="ml-auto">
+          <b-nav-item :to="{ name: 'index' }">
+            <i class="fa fa-user"></i>
+          </b-nav-item>
+        </b-nav>
+      </b-collapse>
     </div>
-  </nav>
+  </b-navbar>
 </template>
