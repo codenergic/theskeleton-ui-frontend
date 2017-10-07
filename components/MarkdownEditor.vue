@@ -1,29 +1,45 @@
 <template>
   <div>
     <div class="input-group fluid">
-      <input type="text" v-model="post.title" class="text-editor-title" placeholder="Title">
+      <input type="text" v-model="dataTitle" class="text-editor-title" placeholder="Title">
     </div>
-    <medium-editor :text="post.body || ''" :options="editorOptions"></medium-editor>
+    <medium-editor :text="content" :options="editorOptions" @edit="textChanged"></medium-editor>
+    <div class="row">
+      <div class="col-12">
+        <b-button size="lg" variant="dark" class="col-xs-12 col-md-3 py-3" @click="$emit('post', { title: dataTitle, content: dataContent })">
+          <i class="fa fa-send"></i>
+          Post
+        </b-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import EditorMarkdown from 'medium-editor-markdown'
-import { mapState } from 'vuex'
-
 export default {
-  data: () => ({
-    textMarkdown: ''
-  }),
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    content: {
+      type: String,
+      default: ''
+    }
+  },
+  data () {
+    return {
+      dataTitle: this.title,
+      dataContent: ''
+    }
+  },
   methods: {
-    textChanged (text) {
-      this.textMarkdown = text
+    textChanged (operation) {
+      this.dataContent = operation.event.srcElement.innerHTML
+      this.$emit('edit', operation)
     }
   },
   computed: {
-    ...mapState({
-      post: 'post'
-    }),
     editorOptions () {
       return {
         paste: {
@@ -40,9 +56,6 @@ export default {
           buttons: ['bold', 'italic', 'quote', 'anchor', 'h3', 'li'],
           diffLeft: 25,
           diffTop: 10
-        },
-        extensions: {
-          markdown: new EditorMarkdown(this.textChanged)
         }
       }
     }
@@ -52,7 +65,7 @@ export default {
 
 <style>
 .medium-editor-element {
-  min-height: 500px;
+  min-height: 100px;
 }
 
 .medium-editor-element:focus, .text-editor-title:focus {

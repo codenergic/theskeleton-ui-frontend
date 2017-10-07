@@ -1,37 +1,28 @@
 <template>
-  <markdown-editor></markdown-editor>
+  <div>
+    <markdown-editor @post="postContent"></markdown-editor>
+  </div>
 </template>
 
 <script>
 import MarkdownEditor from '~/components/MarkdownEditor'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
     MarkdownEditor
   },
-  data: () => ({
-    editorOptions: {
-      paste: {
-        forcePlainText: true,
-        cleanPastedHTML: true,
-        cleanReplacements: [],
-        cleanAttrs: ['class', 'style', 'dir'],
-        cleanTags: ['meta']
-      },
-      placeholder: {
-        text: 'Write your story'
-      },
-      toolbar: {
-        buttons: ['bold', 'italic', 'quote', 'anchor', 'h2', 'h3'],
-        diffLeft: 25,
-        diffTop: 10
-      }
-    }
-  }),
   computed: {
     ...mapState({
       post: 'post'
+    })
+  },
+  methods: {
+    postContent ({ title, content }) {
+      this.savePost({ title, content })
+    },
+    ...mapActions({
+      savePost: 'savePost'
     })
   },
   fetch ({ store, params }) {

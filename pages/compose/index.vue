@@ -1,10 +1,11 @@
 <template>
+  <div></div>
 </template>
 
 <script>
 export default {
   mounted () {
-    this.$router.push({ name: 'compose-id', params: { id: '+' } })
+    this.$router.replace({ name: 'compose-id', params: { id: '+' } })
   }
 }
 </script>
