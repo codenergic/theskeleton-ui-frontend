@@ -5,11 +5,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'theskeleton-ui-frontend',
+    title: 'TheSkeleton',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'TheSkeleton UI Frontend' }
+      { hid: 'description', name: 'description', content: 'TheSkeleton' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -46,6 +46,7 @@ module.exports = {
     '/auth'    : proxyTarget,
     '/login'   : proxyTarget,
     '/manage'  : proxyTarget,
+    '/oauth'  : proxyTarget,
     '/webjars' : proxyTarget
   },
 

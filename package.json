@@ -5,7 +5,7 @@
   "author": "dianw <dianw.aditya@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "PORT=9000 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
