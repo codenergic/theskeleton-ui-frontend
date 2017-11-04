@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="input-group fluid">
-      <input type="text" v-model="dataTitle" class="text-editor-title" placeholder="Title">
+      <input type="text" v-model="dataTitle" class="text-editor-title col-12" placeholder="Title">
     </div>
     <medium-editor :text="content" :options="editorOptions" @edit="textChanged"></medium-editor>
     <div class="row">
@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .medium-editor-element {
   min-height: 100px;
 }

@@ -6,13 +6,15 @@
       </h1>
       <post-preview-box v-for="post in posts.content" :key="post.id" :title="post.title" :content="post.content" class="mb-4"></post-preview-box>
     </div>
-    <div class="col-md-4">
-      <search-box class="my-3"></search-box>
-      <categories-box class="my-3"></categories-box>
-      <b-card class="my-3" header="Did you know" header-tag="h5">
-        There are only 4 words in the English language which end in 'dous' (they are: hazardous, horrendous, stupendous and tremendous)
-      </b-card>
-    </div>
+    <no-ssr>
+      <div class="col-md-4">
+        <search-box class="my-3"></search-box>
+        <categories-box class="my-3"></categories-box>
+        <b-card class="my-3" header="Did you know" header-tag="h5">
+          There are only 4 words in the English language which end in 'dous' (they are: hazardous, horrendous, stupendous and tremendous)
+        </b-card>
+      </div>
+    </no-ssr>
   </div>
 </template>
 

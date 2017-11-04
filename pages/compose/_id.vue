@@ -32,20 +32,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.medium-editor-element {
-  min-height: 500px;
-}
-
-.medium-editor-element:focus, .text-editor-title:focus {
-  outline: none;
-}
-
-.text-editor-title {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-size: 2em;
-}
-</style>
