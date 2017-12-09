@@ -2,7 +2,9 @@ import queryString from 'query-string'
 
 export const state = () => ({
   session: null,
-  loggedInUser: {}
+  loggedInUser: {},
+  responseHttpStatus: null,
+  lastState: null
 })
 
 export const getters = {
@@ -24,26 +26,33 @@ export const getters = {
 }
 
 export const mutations = {
-  setSession (state, session) {
-    state.session = session
+  setLastState (state, lastState) {
+    state.lastState = lastState
   },
   setLoggedInUser (state, user) {
     state.loggedInUser = { ...user }
+  },
+  setResponseHttpStatus (state, httpStatus) {
+    state.responseHttpStatus = httpStatus
+  },
+  setSession (state, session) {
+    state.session = session
   }
 }
 
 export const actions = {
-  checkSession ({ commit, dispatch, getters }) {
+  checkSession ({ commit, dispatch, getters, state }) {
     const session = window.localStorage.getItem('session')
     if (!session) {
       return dispatch('deleteSession').then(() => false)
     } else {
-      return dispatch('saveSession', JSON.parse(session)).then(() => {
-        if (getters.isSessionValid) {
+      if (getters.isSessionValid && state.loggedInUser.username) {
+        return true
+      } else {
+        return dispatch('saveSession', JSON.parse(session)).then(() => {
           return true
-        }
-        return false
-      })
+        })
+      }
     }
   },
   deleteSession ({ commit }) {

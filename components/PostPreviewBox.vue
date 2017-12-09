@@ -1,6 +1,6 @@
 <template>
   <b-card img-src="http://placehold.it/750x300" :alt="title" :title="title" title-tag="h2" img-top>
-    <p class="card-text" v-html="content"></p>
+    <div class="card-text" v-html="content"></div>
     <a href="#" class="btn btn-primary">Read More &rarr;</a>
     <div class="text-muted" slot="footer">
       Posted on January 1, 2017

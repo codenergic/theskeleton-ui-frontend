@@ -1,4 +1,4 @@
-const proxyTarget = 'http://localhost:8080'
+const serverUrl = process.env.SERVER_URL || 'https://theskeleton.codenergic.org'
 
 module.exports = {
   /*
@@ -15,11 +15,16 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   css: [
     '~/assets/styles/style.scss',
     'medium-editor/dist/css/medium-editor.css',
     'medium-editor/dist/css/themes/default.css'
   ],
+
+  env: {
+    serverUrl
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -27,39 +32,23 @@ module.exports = {
 
   modules: [
     [ '@nuxtjs/axios', {
-      baseURL: '/api',
+      baseURL: serverUrl + '/api',
       requestInterceptor: (config, { store }) => {
         return config
       }
     }],
-    [ '@nuxtjs/bootstrap-vue', { css: false } ],
     [ '@nuxtjs/font-awesome' ],
-    [ '@nuxtjs/proxy' ]
+    [ 'bootstrap-vue/nuxt', { css: false } ],
   ],
 
   plugins: [
     { src: '~/plugins/vue2-medium-editor', ssr: false }
   ],
 
-  proxy: {
-    '/api'     : proxyTarget,
-    '/auth'    : proxyTarget,
-    '/login'   : proxyTarget,
-    '/manage'  : proxyTarget,
-    '/oauth'  : proxyTarget,
-    '/webjars' : proxyTarget
-  },
-
   /*
   ** Build configuration
   */
   build: {
-    vendor: [
-      '@nuxtjs/bootstrap-vue',
-      '@nuxtjs/axios',
-      '@nuxtjs/font-awesome',
-      'vue2-medium-editor'
-    ],
     /*
     ** Run ESLINT on save
     */

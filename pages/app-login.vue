@@ -41,7 +41,7 @@ export default {
           scope,
           state
         })
-        window.location.href = origin + '/oauth/authorize' + queryParam
+        window.location.href = process.env.serverUrl + '/oauth/authorize' + queryParam
       }
     },
     ...mapActions({

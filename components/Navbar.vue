@@ -8,14 +8,14 @@
       </b-navbar-brand>
 
       <b-collapse is-nav id="nav-collapse">
-        <b-nav is-nav-bar>
+        <b-navbar-nav>
           <b-nav-item :to="{ name: 'compose' }">
             <i class="fa fa-pencil"></i>
             Write a Story
           </b-nav-item>
-        </b-nav>
+        </b-navbar-nav>
         <no-ssr>
-          <b-nav is-nav-bar class="ml-auto">
+          <b-navbar-nav class="ml-auto">
             <b-nav-item :to="{ name: 'index' }" v-if="currentUser.username">
               <i class="fa fa-user"></i>
               {{ currentUser.username }}
@@ -23,7 +23,7 @@
             <b-nav-item :to="{ name: 'app-login' }" v-else>
               Login
             </b-nav-item>
-          </b-nav>
+          </b-navbar-nav>
         </no-ssr>
       </b-collapse>
     </div>
