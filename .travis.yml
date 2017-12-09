@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- '8'
+before_script:
+- yarn
+script:
+- SERVER_URL=$SERVER_URL yarn run build
+env:
+  global:
+    - SERVER_URL=https://theskeleton.codenergic.org
