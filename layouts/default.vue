@@ -2,7 +2,7 @@
   <div>
     <navbar :current-user="currentUser" />
     <br />
-    <div class="container">
+    <div class="container mb-5">
       <nuxt/>
     </div>
   </div>
