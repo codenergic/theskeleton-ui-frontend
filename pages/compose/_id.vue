@@ -1,6 +1,6 @@
 <template>
   <div>
-    <markdown-editor @post="postContent"></markdown-editor>
+    <markdown-editor @post="postContent" :title="post.title" :content="post.content"></markdown-editor>
   </div>
 </template>
 

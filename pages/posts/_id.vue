@@ -8,22 +8,27 @@
     </h2>
     <p>
     </p>
-    <figure>
+    <!-- <figure>
       <img src="https://unsplash.it/1200/400?image=0">
       <figcaption v-text="post.title"></figcaption>
-    </figure>
-    <p v-html="post.body">
-    </p>
+    </figure> -->
+    <div v-html="post.content">
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   computed: {
     ...mapState({
       post: 'post'
+    })
+  },
+  methods: {
+    ...mapActions({
+      findPostById: 'post/findPostById'
     })
   },
   fetch ({ store, params }) {

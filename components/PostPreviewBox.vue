@@ -1,7 +1,10 @@
 <template>
   <b-card img-src="http://placehold.it/750x300" :alt="title" :title="title" title-tag="h2" img-top>
     <div class="card-text" v-html="content"></div>
-    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+    <b-button :to="to" variant="primary">
+      Read more
+      <i class="fa fa-external-link"></i>
+    </b-button>
     <div class="text-muted" slot="footer">
       Posted on January 1, 2017
     </div>
@@ -18,6 +21,10 @@ export default {
     content: {
       type: String,
       required: true
+    },
+    to: {
+      type: Object,
+      default: () => ({})
     }
   }
 }

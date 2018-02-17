@@ -17,9 +17,7 @@ module.exports = {
   },
 
   css: [
-    '~/assets/styles/style.scss',
-    'medium-editor/dist/css/medium-editor.css',
-    'medium-editor/dist/css/themes/default.css'
+    '~/assets/styles/style.scss'
   ],
 
   env: {
@@ -42,7 +40,6 @@ module.exports = {
   ],
 
   plugins: [
-    { src: '~/plugins/vue2-medium-editor', ssr: false }
   ],
 
   /*
@@ -54,7 +51,7 @@ module.exports = {
     ** Run ESLINT on save
     */
     extend (config, ctx) {
-      if (ctx.dev && ctx.isClient) {
+      if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,

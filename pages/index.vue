@@ -4,7 +4,7 @@
       <h1 class="my-3">
         You might like
       </h1>
-      <post-preview-box v-for="post in posts.content" :key="post.id" :title="post.title" :content="post.content" class="mb-4">
+      <post-preview-box v-for="post in posts.content" :key="post.id" :title="post.title" :content="post.content" :to="{ name: 'posts-id', params: { id: post.id } }" class="mb-4">
       </post-preview-box>
     </div>
     <no-ssr>

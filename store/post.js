@@ -23,7 +23,7 @@ export const actions = {
     } else {
       return this.$axios.post('/posts', post).then(response => {
         commit('setPost', response.data)
-        return response.post
+        return response.data
       })
     }
   },

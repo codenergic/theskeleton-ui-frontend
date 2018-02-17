@@ -1,21 +1,18 @@
 <template>
   <div>
-    <div class="input-group fluid">
-      <input type="text" v-model="dataTitle" class="text-editor-title col-12" placeholder="Title">
+    <div ref="dataTitle" data-name="title">
+      <h2 v-text="title" class="mb-3"></h2>
     </div>
-    <medium-editor :text="content" :options="editorOptions" @edit="textChanged"></medium-editor>
-    <div class="row">
-      <div class="col-12">
-        <b-button size="lg" variant="dark" class="col-xs-12 col-md-3 py-3" @click="$emit('post', { title: dataTitle, content: dataContent })">
-          <i class="fa fa-send"></i>
-          Post
-        </b-button>
-      </div>
+    <div ref="dataContent" data-name="content">
+      <p v-html="content"></p>
     </div>
   </div>
 </template>
 
 <script>
+import 'ContentTools/build/content-tools.min.css'
+import ContentTools from 'ContentTools'
+
 export default {
   props: {
     title: {
@@ -29,53 +26,44 @@ export default {
   },
   data () {
     return {
-      dataTitle: this.title,
-      dataContent: ''
-    }
-  },
-  methods: {
-    textChanged (operation) {
-      this.dataContent = operation.event.srcElement.innerHTML
-      this.$emit('edit', operation)
+      editor: null
     }
   },
   computed: {
-    editorOptions () {
-      return {
-        paste: {
-          forcePlainText: true,
-          cleanPastedHTML: true,
-          cleanReplacements: [],
-          cleanAttrs: ['class', 'style', 'dir'],
-          cleanTags: ['meta']
-        },
-        placeholder: {
-          text: 'Write your story'
-        },
-        toolbar: {
-          buttons: ['bold', 'italic', 'quote', 'anchor', 'h3', 'li'],
-          diffLeft: 25,
-          diffTop: 10
-        }
-      }
+    defaultTools () {
+      return [
+        [ 'bold', 'italic', 'link' ],
+        [ 'heading', 'subheading', 'line-break' ],
+        [ 'undo', 'redo' ]
+      ]
     }
+  },
+  methods: {
+    editorSave (ev) {
+      const regions = ev.detail().regions
+      this.$emit('post', {
+        title: regions.title || this.title,
+        content: regions.content || this.content
+      })
+    },
+    editorCancel () {
+      this.$emit('cancel')
+    },
+    initializeEditor () {
+      ContentTools.DEFAULT_TOOLS = this.defaultTools
+      const editor = this.editor = ContentTools.EditorApp.get()
+      editor.init([ this.$refs.dataTitle, this.$refs.dataContent ], 'data-name')
+      editor.addEventListener('saved', this.editorSave)
+      editor.addEventListener('revert', this.editorCancel)
+      editor.start()
+      editor.ignition().state('editing')
+    }
+  },
+  mounted () {
+    this.initializeEditor()
+  },
+  destroyed () {
+    this.editor.destroy()
   }
 }
 </script>
-
-<style scoped>
-.medium-editor-element {
-  min-height: 100px;
-}
-
-.medium-editor-element:focus, .text-editor-title:focus {
-  outline: none;
-}
-
-.text-editor-title {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-size: 2em;
-}
-</style>
