@@ -33,7 +33,7 @@ export const actions = {
       return response.data
     })
   },
-  findPosts ({ commit }, params = {title: '', page: 1, size: 20}) {
+  findPosts ({ commit }, params = { title: '', page: 1, size: 20 }) {
     params.page -= 1
     params.sort = 'title,asc'
     return this.$axios.get('/posts', { params }).then(response => {

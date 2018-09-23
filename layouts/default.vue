@@ -1,8 +1,9 @@
 <template>
   <div>
-    <navbar :current-user="currentUser" />
-    <br />
-    <div class="container mb-5">
+    <no-ssr>
+      <navbar></navbar>
+    </no-ssr>
+    <div class="container my-5">
       <nuxt/>
     </div>
   </div>
@@ -13,6 +14,11 @@ import { mapActions, mapState } from 'vuex'
 import Navbar from '~/components/Navbar'
 
 export default {
+  data () {
+    return {
+      menuCollapsed: true
+    }
+  },
   components: {
     Navbar
   },
@@ -22,6 +28,9 @@ export default {
     })
   },
   methods: {
+    toggleMenu () {
+      this.menuCollapsed = !this.menuCollapsed
+    },
     ...mapActions({
       checkSession: 'auth/checkSession'
     })

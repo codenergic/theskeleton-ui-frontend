@@ -17,7 +17,8 @@ module.exports = {
   },
 
   css: [
-    '~/assets/styles/style.scss'
+    // '~/assets/styles/style.scss'
+    '~/assets/css/dashboard.css'
   ],
 
   env: {
@@ -36,10 +37,11 @@ module.exports = {
       }
     }],
     [ '@nuxtjs/font-awesome' ],
-    [ 'bootstrap-vue/nuxt', { css: false } ],
+    [ 'bootstrap-vue/nuxt', { css: false } ]
   ],
 
   plugins: [
+    { src: '~/plugins/tabler.js', ssr: false }
   ],
 
   /*

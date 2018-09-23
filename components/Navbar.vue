@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <b-navbar toggleable="md" type="dark" variant="dark" sticky>
     <div class="container">
       <b-nav-toggle target="nav-collapse"></b-nav-toggle>
@@ -44,6 +44,47 @@
       </b-collapse>
     </div>
   </b-navbar>
+</template> -->
+
+<template>
+  <tb-site-wrapper>
+    <tb-site-header @toggle-menu="toggleMenu">
+      <tb-notifications/>
+      <tb-account-dropdown imageUrl="/static/demo/faces/female/25.jpg"/>
+    </tb-site-header>
+    <tb-site-nav :collapsed="menuCollapsed">
+      <tb-nav-item :to="{ name: 'index' }" icon="home" label="Home"/>
+      <tb-nav-item to="/interface" icon="box" label="Interface">
+        <tb-dropdown-menu-item label="Cards design"/>
+        <tb-dropdown-menu-item label="Charts"/>
+        <tb-dropdown-menu-item label="Pricing cards"/>
+      </tb-nav-item>
+      <tb-nav-item to="/pages" icon="calendar" label="Components">
+        <tb-dropdown-menu-item label="Maps"/>
+        <tb-dropdown-menu-item label="Icons"/>
+        <tb-dropdown-menu-item label="Blog"/>
+        <tb-dropdown-menu-item label="Carousel"/>
+      </tb-nav-item>
+      <tb-nav-item to="/pages" icon="file" label="Pages">
+        <tb-dropdown-menu-item label="Profile"/>
+        <tb-dropdown-menu-item label="Login"/>
+        <tb-dropdown-menu-item label="Register"/>
+        <tb-dropdown-menu-item label="Forgot password"/>
+        <tb-dropdown-menu-item label="400 error"/>
+        <tb-dropdown-menu-item label="401 error"/>
+        <tb-dropdown-menu-item label="403 error"/>
+        <tb-dropdown-menu-item label="404 error"/>
+        <tb-dropdown-menu-item label="500 error"/>
+        <tb-dropdown-menu-item label="503 error"/>
+        <tb-dropdown-menu-item label="Email"/>
+        <tb-dropdown-menu-item label="Empty page"/>
+        <tb-dropdown-menu-item label="RTL mode"/>
+      </tb-nav-item>
+      <tb-nav-item to="/" icon="check-square" label="Forms"/>
+      <tb-nav-item to="/" icon="image" label="Gallery"/>
+      <tb-nav-item to="/" icon="file-text" label="Documentation"/>
+    </tb-site-nav>
+  </tb-site-wrapper>
 </template>
 
 <script>

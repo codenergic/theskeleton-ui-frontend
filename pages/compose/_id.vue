@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import MarkdownEditor from '~/components/MarkdownEditor'
+// import MarkdownEditor from '~/components/MarkdownEditor'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
-    MarkdownEditor
+    // MarkdownEditor
   },
   computed: {
     ...mapState({

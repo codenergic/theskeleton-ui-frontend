@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-8">
       <h1 class="my-3">
         You might like
@@ -16,33 +16,38 @@
         </b-card>
       </div>
     </no-ssr>
+  </div> -->
+  <div>
+    <b-card>
+
+    </b-card>
   </div>
 </template>
 
 <script>
-import CategoriesBox from '~/components/CategoriesBox'
-import PostPreviewBox from '~/components/PostPreviewBox'
-import SearchBox from '~/components/SearchBox'
-import { mapActions, mapState } from 'vuex'
+// import CategoriesBox from '~/components/CategoriesBox'
+// import PostPreviewBox from '~/components/PostPreviewBox'
+// import SearchBox from '~/components/SearchBox'
+// import { mapActions, mapState } from 'vuex'
 
 export default {
-  components: {
-    CategoriesBox,
-    PostPreviewBox,
-    SearchBox
-  },
-  computed: {
-    ...mapState({
-      posts: 'posts'
-    })
-  },
-  methods: {
-    ...mapActions({
-      find: 'findPosts'
-    })
-  },
-  fetch ({ store }) {
-    return store.dispatch('findPosts')
-  }
+  // components: {
+  //   CategoriesBox,
+  //   PostPreviewBox,
+  //   SearchBox
+  // },
+  // computed: {
+  //   ...mapState({
+  //     posts: 'posts'
+  //   })
+  // },
+  // methods: {
+  //   ...mapActions({
+  //     find: 'findPosts'
+  //   })
+  // },
+  // fetch ({ store }) {
+  //   return store.dispatch('findPosts')
+  // }
 }
 </script>
